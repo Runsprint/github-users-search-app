@@ -10,39 +10,79 @@ let userLocation = document.getElementById("location")as HTMLElement;
 let github_url = document.getElementById("github_link")as HTMLElement;
 let github = document.getElementById("@github")as HTMLElement;
 let logo_light = document.getElementById("logo_light")as HTMLDivElement;
-let body = document.getElementById("body") as HTMLElement;
 let search = document.getElementById("search") as HTMLInputElement;
 let logo = document.getElementById("logo") as HTMLImageElement;
+let available = document.getElementById("available") as HTMLElement;
+let noResult = document.getElementById("noResult")as HTMLElement;
+let devfinder= document.getElementById("devfinder")as HTMLElement;
+let moon = document.getElementById("moon")as HTMLImageElement;
+let sun_moon = document.getElementById("sun_moon")as HTMLImageElement;
+let div2 = document.querySelectorAll(".div2");
+let elements= document.querySelectorAll(".h1");
+let body_color = document.querySelectorAll(".body_color");
+let numbers = document.querySelectorAll(".numbers");
 async function getGithubInfo(url: string) {
   const response = await fetch(url);
   const data = await response.json();
   return data;
 }
 let data = await getGithubInfo(`https://api.github.com/users/octocat`);
+logo.src= data.avatar_url;
 console.log(data);
 
 logo_light.addEventListener("click",()=>{
-    body.style.background = "#ffffff";
+  body_color.forEach((element) => {
+    (element as HTMLElement).style.background = "#F6F8FF";
+  });
+    devfinder.style.color="black";
+    logo_light.style.color= "#4B6A9B";
+    sun_moon.style.display= "none";
+    moon.style.display= "flex";
+    search.style.background="#ffffff"
+    div2.forEach((element) => {
+      (element as HTMLElement).style.background = '#ffffff';
+    });
+    userName.style.color="black";
+    elements.forEach((element) => {
+      (element as HTMLElement).style.color = '#697C9A';
+    });
+    numbers.forEach((element) => {
+      (element as HTMLElement).style.color = 'black';
+    });
 });
+
+
+
+
+
+
+
+
+
 button.addEventListener("click",async ()=>{
-  let result = 'https://api.github.com/users/' + search.value; 
-  let data = await getGithubInfo(result);
-  console.log(data);
-  logo.src = data.avatar_url;
-  userName.textContent = data.login;
-  shortName.textContent = "@" + data.login;
-  let dateObject = new Date(data.created_at);//took some object from data
-  let dateString = dateObject.toDateString();//after this object transform in string
-  let dateArray = dateString.split(" "); //after this string gavsplitet and this space, means splitting one-one and get array
-  let [,month,day,year]= dateArray;//after this array transform and gve this names , first is without name, seocnd is month, third day and etc.
-  joined.textContent = `Joined ${day} ${month} ${year}`; //after used teamplate literal (this structure with $ and {} and spacs)
-  bio.textContent = data.bio;
-  repos.textContent = data.public_repos;
-  followers.textContent = data.followers;
-  following.textContent= data.following;
-  userLocation.textContent = data.location;
-  github_url.textContent = data.html_url;
-  github.textContent = data.company;
+  try {
+    let result = 'https://api.github.com/users/' + search.value; 
+    let data = await getGithubInfo(result);
+    console.log(data);
+    logo.src = data.avatar_url;
+    userName.textContent = data.login;
+    shortName.textContent = "@" + data.login;
+    let dateObject = new Date(data.created_at);//took some object from data
+    let dateString = dateObject.toDateString();//after this object transform in string
+    let dateArray = dateString.split(" "); //after this string gavsplitet and this space, means splitting one-one and get array
+    let [,month,day,year]= dateArray;//after this array transform and gve this names , first is without name, seocnd is month, third day and etc.
+    joined.textContent = `Joined ${day} ${month} ${year}`; //after used teamplate literal (this structure with $ and {} and spacs)
+    bio.textContent = data.bio?data.bio : available.textContent;
+    repos.textContent = data.public_repos?data.public_repos : available.textContent;
+    followers.textContent = data.followers?data.followers : available.textContent;
+    following.textContent= data.following?data.following : available.textContent;
+    userLocation.textContent = data.location?data.location: available.textContent;
+    github_url.textContent = data.html_url?data.html_url:available.textContent ;
+    github.textContent = data.company?data.company : available.textContent;
+  } catch(error){
+    alert("Error");
+  }
+  
 })
 
 

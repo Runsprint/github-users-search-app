@@ -63,7 +63,7 @@ header,.logo_light{
   font-size: 13px;
   line-height: 25px;
   letter-spacing: 0.7px;
-  width:197px;
+  width: 115px;
   color: white;
 }
 ::placeholder{
@@ -150,6 +150,16 @@ svg path{
 .notavailable_svg path{
   fill: #697C9A;
 }
+.result{
+  color: red;
+  display: none;
+}
+.moon{
+  display: none;
+}
+header svg path{
+  fill: #697C9A;
+}
 @media(min-width:768px){
   .first_div{
       width: 573px;
@@ -162,7 +172,7 @@ svg path{
   }
   .search{
       font-size: 18px;
-      width: 400px;
+      width: 350px;
   }
   header{
       width: 573px;
@@ -217,7 +227,7 @@ svg path{
       height: 69px;
   }
   .search{
-      width: 550px;
+    width: 453px;
   }
   .for_background{
       width: 658px;
