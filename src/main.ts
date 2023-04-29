@@ -21,6 +21,11 @@ let div2 = document.querySelectorAll(".div2");
 let elements= document.querySelectorAll(".h1");
 let body_color = document.querySelectorAll(".body_color");
 let numbers = document.querySelectorAll(".numbers");
+
+// let svgElement = document.querySelector(".pictures")as SVGAElement;
+// let pathElements = svgElement.querySelectorAll("fill") as NodeListOf<SVGPathElement>;
+// console.log(pathElements)
+
 async function getGithubInfo(url: string) {
   const response = await fetch(url);
   const data = await response.json();
@@ -49,6 +54,9 @@ logo_light.addEventListener("click",()=>{
     numbers.forEach((element) => {
       (element as HTMLElement).style.color = 'black';
     });
+    // pathElements.forEach((pathElement) => {
+    //   pathElement.setAttribute("fill", '#697C9A'); 
+    // });
 });
 
 

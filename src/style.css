@@ -150,6 +150,7 @@ svg path{
 .notavailable_svg path{
   fill: #697C9A;
 }
+
 .result{
   color: red;
   display: none;
