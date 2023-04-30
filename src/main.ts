@@ -10,7 +10,6 @@ let userLocation = document.getElementById("location")as HTMLElement;
 let github_url = document.getElementById("github_link")as HTMLElement;
 let github = document.getElementById("@github")as HTMLElement;
 let logo_light = document.getElementById("logo_light")as HTMLDivElement;
-let search = document.getElementById("search") as HTMLInputElement;
 let logo = document.getElementById("logo") as HTMLImageElement;
 let available = document.getElementById("available") as HTMLElement;
 let noResult = document.getElementById("noResult")as HTMLElement;
@@ -21,11 +20,11 @@ let div2 = document.querySelectorAll(".div2");
 let elements= document.querySelectorAll(".h1");
 let body_color = document.querySelectorAll(".body_color");
 let numbers = document.querySelectorAll(".numbers");
-
-// let svgElement = document.querySelector(".pictures")as SVGAElement;
-// let pathElements = svgElement.querySelectorAll("fill") as NodeListOf<SVGPathElement>;
-// console.log(pathElements)
-
+let loc = document.querySelector('.pictures') as HTMLElement;
+let search = document.querySelector('input') as HTMLInputElement;// how to change input placeholder text color 
+let loc2 = document.querySelector('.pictures2') as HTMLElement;
+let loc3 = document.querySelector('.pictures3') as HTMLElement;
+let light = document.querySelector(".light")as HTMLElement;
 async function getGithubInfo(url: string) {
   const response = await fetch(url);
   const data = await response.json();
@@ -33,40 +32,61 @@ async function getGithubInfo(url: string) {
 }
 let data = await getGithubInfo(`https://api.github.com/users/octocat`);
 logo.src= data.avatar_url;
-console.log(data);
 
+let isClicked = false;
 logo_light.addEventListener("click",()=>{
-  body_color.forEach((element) => {
-    (element as HTMLElement).style.background = "#F6F8FF";
-  });
-    devfinder.style.color="black";
-    logo_light.style.color= "#4B6A9B";
-    sun_moon.style.display= "none";
-    moon.style.display= "flex";
-    search.style.background="#ffffff"
-    div2.forEach((element) => {
-      (element as HTMLElement).style.background = '#ffffff';
+  if(!isClicked){
+    body_color.forEach((element) => {
+      (element as HTMLElement).style.background = "#F6F8FF";
     });
-    userName.style.color="black";
+      devfinder.style.color="black";
+      logo_light.style.color= "#4B6A9B";
+      sun_moon.style.display= "none";
+      moon.style.display= "flex";
+      search.style.background="#ffffff";//i deleted and add new classname , which I didnt use in html, just classed in css and used it with this code
+      search.classList.remove('search'); 
+      search.classList.add('dark_input'); 
+      div2.forEach((element) => {
+        (element as HTMLElement).style.background = '#ffffff';
+      });
+      userName.style.color="black";
+      elements.forEach((element) => {
+        (element as HTMLElement).style.color = '#697C9A';
+      });
+      numbers.forEach((element) => {
+        (element as HTMLElement).style.color = 'black';
+      });
+      loc.classList.remove('pictures'); 
+      loc.classList.add('svgcolor');
+      loc2.classList.remove('pictures2'); 
+      loc2.classList.add('svgcolor');
+      loc3.classList.remove('pictures3'); 
+      loc3.classList.add('svgcolor');
+      light.textContent= "Dark"; 
+      isClicked = true;
+  } else{
+    body_color.forEach((element) => {
+      (element as HTMLElement).style.background = "#141D2F";
+    });
+    search.style.background="#1E2A47";
+    devfinder.style.color="white";
+    logo_light.style.color= "white";
+    sun_moon.style.display= "flex";
+    moon.style.display= "none";            
+    div2.forEach((element) => {
+      (element as HTMLElement).style.background = '#1E2A47';
+    });
+    userName.style.color="white";
     elements.forEach((element) => {
-      (element as HTMLElement).style.color = '#697C9A';
+      (element as HTMLElement).style.color = 'white';
     });
     numbers.forEach((element) => {
-      (element as HTMLElement).style.color = 'black';
-    });
-    // pathElements.forEach((pathElement) => {
-    //   pathElement.setAttribute("fill", '#697C9A'); 
-    // });
+      (element as HTMLElement).style.color = 'white';
+     });     
+     light.textContent= "Light";      
+    isClicked = false; 
+  }
 });
-
-
-
-
-
-
-
-
-
 button.addEventListener("click",async ()=>{
   try {
     let result = 'https://api.github.com/users/' + search.value; 

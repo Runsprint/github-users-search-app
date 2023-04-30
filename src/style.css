@@ -31,14 +31,17 @@ header,.logo_light{
   align-items: center;
   color: #ffffff;
   font-weight: 700;
-  gap: 34px;
+  gap: 107px;
+}
+header,.for_background{
+  width: 327px;
 }
 .img{
   width: 70px;
   padding-top: 28px;
 }
 .devfinder{
-  font-size: 2.6rem;
+  font-size: 26px;
 }
 .light{
   font-size: 13px;
@@ -63,11 +66,28 @@ header,.logo_light{
   font-size: 13px;
   line-height: 25px;
   letter-spacing: 0.7px;
-  width: 115px;
+  width: 180px;
   color: white;
 }
 ::placeholder{
   color: #ffffff;
+}
+/* i made this styles for ts cuz I changed class name frrom ts and use this properties */
+.dark_input{
+  background-color: #ffffff;
+  color:#697C9A;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 25px;
+  letter-spacing: 0.7px;
+  width: 180px;
+  border: none;
+}
+.dark_input::placeholder{
+  color: #697C9A;
+}
+.svgcolor path{
+  fill: #697C9A;
 }
 .butt{
   width: 4.5rem;
@@ -129,6 +149,10 @@ font-size: 13px;
 font-weight: 400;
 line-height: 19.25px;
 }
+.mini_last:hover{
+ text-decoration:underline; 
+ cursor: pointer;
+}
 .last_div,.inside_div{
   flex-direction: column;
   display: flex;
@@ -150,7 +174,10 @@ svg path{
 .notavailable_svg path{
   fill: #697C9A;
 }
-
+.butt:hover{
+  background-color: #60ABFF;
+  cursor: pointer;
+}
 .result{
   color: red;
   display: none;
@@ -162,6 +189,9 @@ header svg path{
   fill: #697C9A;
 }
 @media(min-width:768px){
+  .dark_input{
+    width: 400px;
+  }
   .first_div{
       width: 573px;
   }
@@ -223,6 +253,9 @@ header svg path{
   }
 }
 @media(min-width:1440px){
+  .dark_input{
+    width: 500px;
+  }
   .first_div,header{
       width: 730px;
       height: 69px;
