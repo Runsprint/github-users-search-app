@@ -181,6 +181,8 @@ svg path{
 .result{
   color: red;
   display: none;
+  font-size: 15px;
+  font-weight: 700;
 }
 .moon{
   display: none;
@@ -203,7 +205,7 @@ header svg path{
   }
   .search{
       font-size: 18px;
-      width: 350px;
+      width:315px;
   }
   header{
       width: 573px;
@@ -250,6 +252,7 @@ header svg path{
   }
   .last_div{
       margin: 0px;
+      width: 100%;
   }
 }
 @media(min-width:1440px){
@@ -271,5 +274,9 @@ header svg path{
       display: flex;
       gap: 180px;
       align-items: baseline;
+  }
+  .last_div,.text,.information{
+    width: 493px;
+    margin-left: 100px;
   }
 }
