@@ -6,7 +6,7 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 .for_background{
   background-color: #1E2A47;
