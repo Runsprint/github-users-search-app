@@ -25,11 +25,13 @@ let search = document.querySelector('input') as HTMLInputElement;// how to chang
 let light = document.querySelector(".light")as HTMLElement;
 let inputValue = document.getElementById("search")as HTMLInputElement;
 
-
+ async function getOctocat(){
   const response = await fetch('https://api.github.com/users/octocat');
   const data = await response.json();
   logo.src= data.avatar_url;
   console.log(data);
+ }
+  getOctocat();
 
 let isClicked = false;
 logo_light.addEventListener("click",()=>{
